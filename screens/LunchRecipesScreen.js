@@ -1,5 +1,9 @@
 import { View, ScrollView, SafeAreaView, Text } from 'react-native';
 import React from 'react';
+import {
+  SafeAreaProvider,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 
 import { COLORS, icons, images, SIZES } from '../constants';
 import { Title } from '../components';
@@ -7,16 +11,27 @@ import { FoundRecipes } from '../components';
 
 const LunchRecipesScreen = ({ route, navigation }) => {
   const { recipeCategory } = route.params;
+  const insets = useSafeAreaInsets();
+
   return (
-    <SafeAreaView
-        style = {{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+    <SafeAreaProvider 
+        style = {{ 
+          backgroundColor: COLORS.lightWhite,
+          height: SIZES.height, 
+          width: SIZES.width,
+          paddingTop: insets.top,
+          paddingBottom: insets.bottom,
+          paddingLeft: insets.left,
+          paddingRight: insets.right,
+
+        }}
+      >
         {/*<ScrollView showsVerticalScroolIndicator = {false}>*/}
             <View
                 style = {{ 
                   flex: 1, 
-                  padding: SIZES.medium, 
-                  paddingTop: 0,
-                  backgroundColor: COLORS.lightWhite
+                  padding: 20, 
+                  paddingTop: 5,
                 }}
             >
                 {/*<Text>RecipeOptionsScreen</Text>*/}
@@ -28,7 +43,7 @@ const LunchRecipesScreen = ({ route, navigation }) => {
                 
             </View>
         {/*</ScrollView>*/}
-    </SafeAreaView>
+    </SafeAreaProvider>
   )
 }
 

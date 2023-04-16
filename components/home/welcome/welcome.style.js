@@ -1,54 +1,69 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, FONT, SIZES } from "../../../constants";
+import { COLORS, FONT, SIZES,
+    scale, moderateScale, verticalScale, scaleFont, fontPixel
+} from "../../../constants";
 
 const styles = StyleSheet.create({
-    welcomeContainer: {
+    container: {
         width: "100%",
-        backgroundColor: COLORS.lightWhite,
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        paddingHorizontal: scale(15),
+    },
+    welcomeContainer: {
+        //flexDirection: 'column',
+        marginTop: verticalScale(0),
+        //alignContent: 'center',
+        //justifyContent: 'space-around',
+        //flex: 1,
     },
     discoverMsg: {
         fontFamily: FONT.bold,
-        fontSize: SIZES.xLarge,
+        fontSize: scaleFont(SIZES.xLarge, SIZES.fontScale),
         color: COLORS.primary,
+        marginBottom: verticalScale(-5),
     },
     userName: {
         fontFamily: FONT.black,
-        fontSize: SIZES.xxxLarge,
-        color: COLORS.black03,
+        fontSize: scaleFont(42, SIZES.fontScale),
+        color: COLORS.black05,
+        lineHeight: verticalScale(60),
+    },
+    instructionContainer: {
+        marginTop: verticalScale(SIZES.large),
+        marginLeft: scale(-15),
+        flexDirection: 'row',
     },
     roundedContainer: {
-        flex: 1,
         backgroundColor: COLORS.tertiary,
         alignContent: 'center',
         justifyContent: 'center',
-        marginTop: SIZES.xLarge,
-        marginLeft: "-5%",
-        padding: SIZES.large,
-        //paddingLeft: SIZES.xLarge,
+        paddingHorizontal: scale(SIZES.large),
+        paddingVertical: verticalScale(SIZES.large),
+        paddingRight: scale(SIZES.xxxLarge),
         borderTopRightRadius: 80,
         borderBottomRightRadius: 80,
-        width: "80%",
-        height: 110,
+        height: verticalScale(110),
     },
     instructionMsg: {
         fontFamily: FONT.regular,
-        fontSize: SIZES.medium,
+        fontSize: scaleFont(SIZES.medium, SIZES.fontScale),
         color: COLORS.gray3,
     },
+    bold: {
+        fontFamily: FONT.bold,
+    },
     groceryContainer: {
-        backgroundColor: 'transparent',
-        width: 110,
-        height:120,
-        justifyContent: 'center',
-        alignItems: 'center',
-        //zIndex: 1,
-        marginLeft: "69%",
-        marginTop: "-35%",
+        width: scale(140),
+        height: verticalScale(150),
+        marginTop: verticalScale(-20),
+        marginLeft: scale(-20),
     },
     groceryImage: {
-        width: "100%",
-        height: "100%",
+        width: '100%',
+        height: '100%',
     },
 });
 

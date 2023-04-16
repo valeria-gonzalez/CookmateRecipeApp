@@ -1,29 +1,30 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, FONT, SIZES } from "../../../constants";
+import { COLORS, FONT, SIZES,
+    scale, moderateScale, verticalScale, scaleFont
+} from "../../../constants";
 
 const styles = StyleSheet.create({
     arrowContainer: {
-        width: 40,
-        height: 40,
+        width: scale(50),
+        height: verticalScale(50),
     },
     icons: {
         color: COLORS.orange02,
     },
     filterContainer: {
-        width: 40,
-        height: 40,
-        marginLeft: "83%",
-        marginTop: "-14%",
+        width: scale(40),
+        height: verticalScale(40),
+        marginRight: scale(10),
+        marginTop: verticalScale(10),
     },
     titleContainer: {
-        width: "100%",
-        backgroundColor: COLORS.lightWhite,
-        //marginTop: 5,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     titleHeading: {
         fontFamily: FONT.black,
-        fontSize: SIZES.xxxLarge + 5,
+        fontSize: scaleFont(SIZES.xxxLarge + 5, SIZES.fontScale),
         color: COLORS.primary,
     },
 

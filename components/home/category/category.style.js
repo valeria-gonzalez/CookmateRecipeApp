@@ -1,51 +1,50 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, FONT, SIZES } from "../../../constants";
+import { COLORS, FONT, SIZES,
+    scale, moderateScale, verticalScale, scaleFont
+} from "../../../constants";
 
 const styles = StyleSheet.create({
     categoryContainer: {
-        //backgroundColor: COLORS.lightWhite,
+        marginTop: verticalScale(-10),
         width: "100%",
-        marginTop: SIZES.xLarge,
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        paddingHorizontal: scale(10),
+        paddingVertical: verticalScale(10), 
     },
     header: {
-        //backgroundColor: COLORS.lightWhite,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
     },
     headerTitle: {
-        fontSize: SIZES.large,
+        fontSize: scaleFont(SIZES.xLarge, SIZES.fontScale),
         fontFamily: FONT.bold,
         color: COLORS.primary,
     },
     listContainer: {
-        //backgroundColor: COLORS.gray,
-        marginTop: SIZES.medium,
+        marginTop: verticalScale(SIZES.large),
+        marginLeft: scale(10),
+        //marginRight: scale(-10),
     },
     tab: (activeRecipeType, item) => ({
-        width: 200,
-        height: 300,
-        //alignContent: "center",
-        //justifyContent: "center",
-        padding: 10,
-        //backgroundColor: COLORS.tertiary,
+        height: verticalScale(290),
+        alignContent: "center",
+        justifyContent: "center",
+        paddingHorizontal: scale(10),
+        paddingVertical: verticalScale(10),
         borderRadius: SIZES.xxLarge,
-        //borderWidth: 1,
-        backgroundColor: activeRecipeType == item ? COLORS.orange02 : COLORS.secondary,
+        backgroundColor: activeRecipeType == item ? COLORS.orange02 : COLORS.tertiary,
     }),
     tabImage: {
-        width: "100%",
-        height: "100%",
+        width: scale(145),
+        height: verticalScale(170),
         borderRadius: SIZES.xxLarge,
-        //marginLeft: 10,
-        marginTop: -30,
     },
     tabText: (activeRecipeType, item) => ({
-        marginTop: -30,
-        marginLeft: 10,
+        marginTop: verticalScale(20),
+        marginLeft: scale(10),
+        alignSelf: 'flex-start',
         fontFamily: FONT.bold,
-        fontSize: SIZES.xLarge,
+        fontSize: scaleFont(SIZES.xLarge, SIZES.fontScale),
         color: activeRecipeType === item ? COLORS.white : COLORS.gray3,
     }),
 });

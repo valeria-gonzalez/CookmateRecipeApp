@@ -3,29 +3,36 @@ import { View, Text, Image, FlatList, TouchableOpacity} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import styles from './title.style'
-import { icons, images, SIZES } from '../../../constants'
+import { icons, images, SIZES, COLORS, verticalScale} from '../../../constants'
 
 const Title = ({navigation, recipeCategory}) => {
   return (
-    <View>
+    <View style = {{
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      paddingBottom: verticalScale(5),
+    }}
+    
+    >
         {/* Return button */}
+      <View>
         <TouchableOpacity 
             style = {styles.arrowContainer}
             onPress = {() => navigation.goBack()}
         >
             <Ionicons
                 name = 'arrow-back'
-                size = {40}
+                size = {50}
                 style = {styles.icons}
             />
         </TouchableOpacity>
+      </View>
 
         {/* Title */}
       <View style = {styles.titleContainer}>
         <Text style = {styles.titleHeading}>{recipeCategory}</Text>
-      </View>
-
-      <TouchableOpacity 
+        
+        <TouchableOpacity 
             style = {styles.filterContainer}
             onPress = {() => {}}
         >
@@ -35,8 +42,7 @@ const Title = ({navigation, recipeCategory}) => {
                 style = {styles.icons}
             />
         </TouchableOpacity>
-
-
+      </View>
     </View>
   )
 }

@@ -19,6 +19,7 @@ const HEADER_HEIGHT = 350;
 const RecipeScreen = ({navigation, route}) => {
 
   const [selectedRecipe, setSelectedRecipe] = React.useState(null)
+  
 
   const scrollY = useRef( new Animated.Value(0)).current;
 
@@ -217,6 +218,7 @@ const RecipeScreen = ({navigation, route}) => {
 
   {/* Recipe Directions */}
   function renderRecipeDirections(){
+    const[savedRecipe, setSavedRecipe] = React.useState(savedRecipe?.isSaved)
     return(
       <View style = {{
         paddingLeft: 10,
@@ -248,7 +250,7 @@ const RecipeScreen = ({navigation, route}) => {
               </Text>
               <Text style = {{
                 fontFamily: FONT.regular,
-                color: COLORS.black04,
+                color: COLORS.gray3,
                 fontSize: SIZES.medium,
                 lineHeight: 25,
                 marginLeft: 10,
@@ -261,7 +263,7 @@ const RecipeScreen = ({navigation, route}) => {
             </View>
           )}
         />
-
+        
         <TouchableOpacity style = {{
           flexDirection: 'row',
           backgroundColor: COLORS.orange02,
@@ -271,9 +273,10 @@ const RecipeScreen = ({navigation, route}) => {
           height: 50,
           width: '104%',
           borderRadius: SIZES.xLarge
-        }}>
+        }}
+        >
           <Ionicons
-            name = 'heart'
+            name = {selectedRecipe?.isSaved ? 'heart' : 'heart-outline'}
             size = {30}
             style = {{
               color: COLORS.white,
@@ -283,7 +286,7 @@ const RecipeScreen = ({navigation, route}) => {
             fontFamily: FONT.bold,
             color: COLORS.white,
             fontSize: SIZES.large
-          }}> S A V E </Text>
+          }}> {selectedRecipe?.isSaved ? 'Unsave' : 'Save' } </Text>
         </TouchableOpacity>
 
       </View>

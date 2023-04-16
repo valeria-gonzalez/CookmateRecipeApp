@@ -1,16 +1,23 @@
-import { View, Text, TouchableOpacity, FlatList, ActivityIndicator
+import { 
+    View, 
+    Text, 
+    TouchableOpacity, 
+    FlatList,
+    ActivityIndicator, 
+    Animated
 } from 'react-native'
 
-import React from 'react'
+import React, {useRef} from 'react'
 
 import styles from './foundRecipes.style'
-import { icons, images, SIZES, COLORS, dummyData } from '../../../constants'
+import { icons, images, SIZES, COLORS, dummyData, verticalScale } from '../../../constants'
 import RecipeCard from '../../common/recipeCard/RecipeCard';
 import Title from '../title/Title';
 
 const FoundRecipes = ({navigation, recipeCategory}) => {
     const isLoading = false;
     const error = false;
+    const scrollY = useRef(new Animated.Value(0)).current;
 
     return (
         <View style = {styles.cardsContainer}>
@@ -25,7 +32,7 @@ const FoundRecipes = ({navigation, recipeCategory}) => {
                     showsVerticalScrollIndicator = {false}
                     numColumns = {2}
                     columnWrapperStyle={{justifyContent: 'space-between'}}
-                    contentContainerStyle = {{rowGap: SIZES.large}}
+                    contentContainerStyle = {{rowGap: verticalScale(SIZES.large)}}
                     horizontal = {false}
                     ListHeaderComponent = {
                         <View>
@@ -33,6 +40,12 @@ const FoundRecipes = ({navigation, recipeCategory}) => {
                             <Title navigation = {navigation} recipeCategory = {recipeCategory} />
                         </View>
                     }
+                    //scrollEventThrottle={16}
+                    /*onScroll = {
+                        Animated.event([
+                            {nativeEvent: {contentOffset: { y: scrollY}}}
+                        ], {useNativeDriver: true})
+                    }*/
                     renderItem = {({ item }) => {
                         return (
                             <RecipeCard 
@@ -46,6 +59,10 @@ const FoundRecipes = ({navigation, recipeCategory}) => {
                             />
                         )
                     }}
+
+                    ListFooterComponent = {
+                        <View style = {{marginBottom: verticalScale(10)}} />
+                    }
                     
                     // 
                 />

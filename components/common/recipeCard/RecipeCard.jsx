@@ -19,21 +19,25 @@ const RecipeCard = ({recipeItem, onPress}) => {
                 source = {recipeItem.image}
                 resizeMode = "cover"
                 style = {styles.cardImage}
-            
+                
             />
-            {/*Detail*/}
+
             <View style = {styles.cardDetContainer}>
                 {/*Name*/}
                 <Text style = {styles.cardNameText}> 
-                    {recipeItem.name} 
+                        {recipeItem.name} 
                 </Text>
-                {/*Price*/}
+
                 <View style = {styles.cardPriceCont}>
                     <Text style = {styles.cardPriceText}>
-                        {recipeItem.price}
+                    {recipeItem.price}
                     </Text>
                 </View>
+            
+                {/*Price*/}     
             </View>
+           
+           
 
         </TouchableOpacity>
     )

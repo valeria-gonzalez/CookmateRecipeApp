@@ -1,50 +1,46 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, FONT, SIZES } from "../../../constants";
+import { COLORS, FONT, SIZES,
+    scale, moderateScale, verticalScale, scaleFont
+} from "../../../constants";
 
 const styles = StyleSheet.create({
     cardContainer: {
         flexDirection: 'row',
-        width: '46%',
-        height: 260,
+        width: scale(155),
+        height: verticalScale(270),
         alignItems: 'center',
-        //padding: 15,
-        //marginTop: 30,
         borderRadius: 50,
         backgroundColor: COLORS.black01,
     },
     cardImage: {
-        width: '100%',
-        height: '100%',
+        width: scale(155),
+        height: verticalScale(270),
         borderRadius: 50,
         opacity: 0.8,
-        //tintColor: COLORS.transparentDarkGray,
     },
     cardDetContainer: {
-        width: '80%',
-        //paddingHorizontal: 20,
-        //backgroundColor: COLORS.transparentDarkGray,
-        //zIndex: 2,
-        marginLeft: '-90%',
-        marginBottom: '-50%',
+        position: 'absolute',
+        bottom: verticalScale(30),
+        width: scale(130),
+        paddingLeft: scale(10),
     },
     cardNameText: {
-        //flex: 1,
         fontFamily: FONT.bold,
-        fontSize: SIZES.medium + 1,
+        fontSize: scaleFont(SIZES.large, SIZES.fontScale),
         color: COLORS.white,
     },
     cardPriceCont: {
+        marginTop: verticalScale(5),
         backgroundColor: COLORS.primary,
-        marginTop: 10,
-        paddingHorizontal: 10,
-        paddingVertical: 1,
+        paddingHorizontal: scale(10),
+        paddingVertical: verticalScale(1),
         borderRadius: 30,
         width: '80%',
     },
     cardPriceText: {
         fontFamily: FONT.bold,
-        fontSize: SIZES.medium + 1,
+        fontSize: scaleFont(SIZES.medium + 1, SIZES.fontScale),
         color: COLORS.white,
     },
 });

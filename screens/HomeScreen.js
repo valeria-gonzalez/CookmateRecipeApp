@@ -1,42 +1,45 @@
-import { View, ScrollView, SafeAreaView, Text } from 'react-native';
+import { View, ScrollView, SafeAreaView, Text, Platform, StatusBar } from 'react-native';
 import React from 'react';
 
-import { COLORS, icons, images, SIZES } from '../constants';
+import { COLORS, icons, images, SIZES, scale, verticalScale,
+  
+} from '../constants';
 import { Welcome } from '../components';
 import { Category } from '../components';
+import {
+  SafeAreaProvider,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 
 export default function HomeScreen({navigation}) {
+
+  const insets = useSafeAreaInsets();
+
   return(
-    <SafeAreaView 
-      style = {{ flex: 1, backgroundColor: COLORS.lightWhite }}>
-        <ScrollView showsVerticalScroolIndicator = {false}>
-          <View
-            style = {{ flex: 1, padding: SIZES.medium, backgroundColor: COLORS.lightWhite
+    <SafeAreaProvider 
+      style = {{ 
+        height: SIZES.height, 
+        width: SIZES.width,
+        backgroundColor: COLORS.lightWhite,
+        paddingTop: insets.top,
+        paddingLeft: insets.left,
+        paddingRight: insets.right,
+      }}>
+        <ScrollView showsVerticalScroolIndicator = {false}
+            contentContainerStyle = {{
+              flex: 1,
+              flexDirection: 'column',
+              alignContent: 'center',
+              justifyContent: 'center',
+              //paddingHorizontal: scale(20),
+              paddingVertical: verticalScale(15),
             }}
           >
             <Welcome />
             {/* Category List buttons here!! */}
             <Category navigation = {navigation} />
-          </View>
         </ScrollView>
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
-/*const HomeScreen = () => {
-  return (
-    <View>
-      <Text>Home Screen</Text>
-    </View>
-  );
-};
-
-export default HomeScreen;*/
-
-/* 
-<Text
-          onPress = {() => alert('This is the "Home" screen.')}
-          style = {{ fontSize: 26, fontWeight: 'bold' }}> 
-          Home Screen 
-        </Text>
-*/

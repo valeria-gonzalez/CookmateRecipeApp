@@ -8,7 +8,7 @@ const trendingRecipes = [
         image: images.spagetti,
         price: "$35.00",
         serving: 1,
-        isBookmark: false,
+        isSaved: false,
         category: "Lunch",
         description: "Spaghetti with Shrimp Sauce is a delicious and easy to make pasta dish. It is a perfect meal for a busy weeknight.",
         ingredients: [
@@ -64,7 +64,7 @@ const trendingRecipes = [
         image: images.satay,
         price: "$90.00",
         serving: 10,
-        isBookmark: true,
+        isSaved: true,
         category: "Dinner",
         description: "Malaysian Chicken Satay is a delicious and easy to make pasta dish. It is a perfect meal for a busy weeknight.",
         ingredients: [
@@ -114,7 +114,7 @@ const trendingRecipes = [
         image: images.laksa,
         price: "$40.00",
         serving: 1,
-        isBookmark: true,
+        isSaved: true,
         category: "Breakfast",
         description: "Sarawak Laksa is a delicious and easy to make pasta dish. It is a perfect meal for a busy weeknight.",
         ingredients: [
@@ -170,7 +170,7 @@ const trendingRecipes = [
         image: images.nasiLemak,
         price: "$210.00",
         serving: 10,
-        isBookmark: true,
+        isSaved: true,
         category: "Lunch",
         description: "Nasi Lemak is a delicious and easy to make pasta dish. It is a perfect meal for a busy weeknight.",
         ingredients: [
