@@ -12,7 +12,13 @@
       "userInterfaceStyle": "light"
     },
     "android": {
-      "userInterfaceStyle": "light"
+      "userInterfaceStyle": "light",
+      "package": "com.ur_dad_val.recipeApp"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "da238a34-f57a-4c92-a47e-fc0b542688cc"
+      }
     }
   }
 }

@@ -8,6 +8,8 @@ import Category from "./home/category/Category";
 import Title from "./recipeOptions/title/Title";
 import FoundRecipes from "./recipeOptions/foundRecipes/FoundRecipes";
 import RecipeCard from "./common/recipeCard/RecipeCard";
+import LikesTitle from "./likes/likesTitle/LikesTitle";
+import LikedRecipes from "./likes/likedRecipes/LikedRecipes";
 // footer
 //import Footer from "./common/footer/Footer";
 
@@ -18,6 +20,8 @@ export {
   Category,
   Title,
   FoundRecipes,
-  RecipeCard
+  RecipeCard,
+  LikesTitle,
+  LikedRecipes
   //Footer
 };

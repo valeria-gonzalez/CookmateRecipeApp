@@ -3,7 +3,7 @@ import HomeScreen from './HomeScreen';
 import PantryScreen from './PantryScreen';
 import LikesScreen from './LikesScreen';
 import RecipeScreen from './RecipeScreen';
-import RecipeOptionsScreen from './RecipeOptionsScreen';
+//import RecipeOptionsScreen from './RecipeOptionsScreen';
 import BreakfastRecipesScreen from './BreakfastRecipesScreen';
 import LunchRecipesScreen from './LunchRecipesScreen';
 import DinnerRecipesScreen from './DinnerRecipesScreen';
@@ -17,5 +17,5 @@ export {
     BreakfastRecipesScreen,
     LunchRecipesScreen,
     DinnerRecipesScreen,
-    RecipeOptionsScreen
+    //RecipeOptionsScreen
 };

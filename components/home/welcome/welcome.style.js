@@ -22,13 +22,13 @@ const styles = StyleSheet.create({
     discoverMsg: {
         fontFamily: FONT.bold,
         fontSize: scaleFont(SIZES.xLarge, SIZES.fontScale),
-        color: COLORS.primary,
+        color: COLORS.black05,
         marginBottom: verticalScale(-5),
     },
     userName: {
         fontFamily: FONT.black,
         fontSize: scaleFont(42, SIZES.fontScale),
-        color: COLORS.black05,
+        color: COLORS.primary,
         lineHeight: verticalScale(60),
     },
     instructionContainer: {

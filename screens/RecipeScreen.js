@@ -9,8 +9,6 @@ import {
   FlatList
 } from 'react-native';
 
-import { BlurView } from '@react-native-community/blur';
-
 import { COLORS, icons, images, SIZES, FONT } from '../constants';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 

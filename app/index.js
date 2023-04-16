@@ -53,8 +53,8 @@ const Page = () => {
             <Stack.Screen name = 'RecipeScreen' component = 
             {RecipeScreen} />
 
-            <Stack.Screen name = 'RecipeOptionsScreen' component = 
-            {RecipeOptionsScreen} />
+            {/*<Stack.Screen name = 'RecipeOptionsScreen' component = 
+            {RecipeOptionsScreen} />*/}
 
             <Stack.Screen name = 'BreakfastRecipesScreen' component = 
             {BreakfastRecipesScreen} />

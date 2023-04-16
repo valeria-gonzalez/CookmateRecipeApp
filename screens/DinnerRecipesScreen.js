@@ -1,12 +1,11 @@
-import { View, ScrollView, SafeAreaView, Text } from 'react-native';
+import { View} from 'react-native';
 import React from 'react';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
-import { COLORS, icons, images, SIZES } from '../constants';
-import { Title } from '../components';
+import { COLORS, SIZES, scale } from '../constants';
 import { FoundRecipes } from '../components';
 
 const DinnerRecipesScreen = ({ route, navigation }) => {
@@ -20,7 +19,7 @@ const DinnerRecipesScreen = ({ route, navigation }) => {
           height: SIZES.height, 
           width: SIZES.width,
           paddingTop: insets.top,
-          paddingBottom: insets.bottom,
+          //paddingBottom: insets.bottom,
           paddingLeft: insets.left,
           paddingRight: insets.right,
 
@@ -29,8 +28,7 @@ const DinnerRecipesScreen = ({ route, navigation }) => {
             <View
                 style = {{ 
                   flex: 1, 
-                  padding: 20, 
-                  paddingTop: 5,
+                  paddingHorizontal: scale(20)
                 }}
             >
                 {/*<Text>RecipeOptionsScreen</Text>*/}

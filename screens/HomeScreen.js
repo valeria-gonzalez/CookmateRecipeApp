@@ -1,9 +1,10 @@
-import { View, ScrollView, SafeAreaView, Text, Platform, StatusBar } from 'react-native';
+import {ScrollView} from 'react-native';
 import React from 'react';
 
-import { COLORS, icons, images, SIZES, scale, verticalScale,
+import { COLORS, SIZES, verticalScale,
   
 } from '../constants';
+
 import { Welcome } from '../components';
 import { Category } from '../components';
 import {

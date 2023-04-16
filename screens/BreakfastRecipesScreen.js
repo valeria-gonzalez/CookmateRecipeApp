@@ -1,4 +1,4 @@
-import { View, ScrollView, SafeAreaView, Text } from 'react-native';
+import { View} from 'react-native';
 import React from 'react';
 import {
   SafeAreaProvider,
@@ -6,7 +6,7 @@ import {
 } from 'react-native-safe-area-context';
 
 
-import { COLORS, icons, images, SIZES, scale } from '../constants';
+import { COLORS, SIZES, scale } from '../constants';
 import { FoundRecipes } from '../components';
 
 const BreakfastRecipesScreen = ({ route, navigation }) => {
@@ -20,7 +20,6 @@ const BreakfastRecipesScreen = ({ route, navigation }) => {
           height: SIZES.height, 
           width: SIZES.width,
           paddingTop: insets.top,
-          //paddingBottom: insets.bottom,
           paddingLeft: insets.left,
           paddingRight: insets.right,
 
@@ -29,8 +28,6 @@ const BreakfastRecipesScreen = ({ route, navigation }) => {
             <View
                 style = {{ 
                   flex: 1, 
-                  //padding: 20, 
-                  //paddingTop: 5,
                   paddingHorizontal: scale(20)
                 }}
             >

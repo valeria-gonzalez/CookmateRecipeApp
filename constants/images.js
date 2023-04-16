@@ -4,7 +4,7 @@ import groceries from "../assets/images/groceries.png";
 import lunch from "../assets/images/lunch.png";
 import chef from "../assets/images/chef.png";
 import laksa from "../assets/images/dummy_recipes/laksa.png";
-import nasiLemak from "../assets/images/dummy_recipes/nasiLemak.webp";
+import nasiLemak from "../assets/images/dummy_recipes/nasiLemak.png";
 import satay from "../assets/images/dummy_recipes/satay.png";
 import spagetti from "../assets/images/dummy_recipes/spagetti.png";
 import construction from "../assets/images/construction.png";
