@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     discoverMsg: {
         fontFamily: FONT.bold,
         fontSize: scaleFont(SIZES.xLarge, SIZES.fontScale),
-        color: COLORS.black05,
+        color: COLORS.orange02,
         marginBottom: verticalScale(-5),
     },
     userName: {
