@@ -10,10 +10,11 @@ import { COLORS, SIZES, scale } from '../constants';
 import { FoundRecipes } from '../components';
 
 const BreakfastRecipesScreen = ({ route, navigation }) => {
-  const { recipeCategory } = route.params;
+  const { recipeCategory} = route.params;
   const insets = useSafeAreaInsets();
-
+  
   return (
+
     <SafeAreaProvider 
         style = {{ 
           backgroundColor: COLORS.lightWhite,

@@ -8,18 +8,18 @@ import React from 'react'
 import styles from './recipeCard.style'
 import { icons, images, SIZES, COLORS} from '../../../constants'
 
-const RecipeCard = ({recipeItem, onPress}) => {
+const RecipeCard = ({recipeItem}) => {
+    //console.log("recipeItem: ", recipeItem);
     return (
         <TouchableOpacity 
             style = {styles.cardContainer}
-            onPress = {onPress}
+            //onPress = {onPress}
         >
             {/* Image */}
             <Image
-                source = {recipeItem.image}
+                source = {{uri: recipeItem.image}}
                 resizeMode = "cover"
                 style = {styles.cardImage}
-                
             />
 
             <View style = {styles.cardDetContainer}>
