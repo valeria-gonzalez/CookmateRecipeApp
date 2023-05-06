@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 import {
   Text,
@@ -11,20 +11,88 @@ import {
 
 import { COLORS, icons, images, SIZES, FONT } from '../constants';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { db } from '../components/config';
+import { collection, query, where, getDocs, doc, getDoc } from "firebase/firestore";
 
 const HEADER_HEIGHT = 350;
 
 const RecipeScreen = ({navigation, route}) => {
 
-  const [selectedRecipe, setSelectedRecipe] = React.useState(null)
-  
-
+  const [selectedRecipe, setSelectedRecipe] = React.useState(null);
+  const [recipeInfo, setRecipeInfo] = useState({});
   const scrollY = useRef( new Animated.Value(0)).current;
 
+  const { recipe } = route.params
+
   React.useEffect(() => {
-    let { recipe } = route.params
+    //let { recipe } = route.params
     setSelectedRecipe(recipe)
   }, [])
+
+  //database operations to get recipe info
+  //const dbRoute = 'recipes/' + recipe.id +'/info/info1';
+  //const colRef = collection(db, dbRoute); //obtain recipe info
+  /*getDocs(colRef)
+      .then((snapshot) => {
+          const recipeInfo = []
+          snapshot.docs.forEach((doc) => {
+            const {ingredients, steps, summary} = doc.data()
+            recipeInfo.push({
+              ingredients,
+              steps,
+              summary,
+            })
+          })
+          setSelRecipeInfo(recipeInfo)
+      })
+      .catch(err => {
+        console.log(err.message)
+      })*/
+    /*getDoc(colRef)
+      .then((doc) => {
+        const { ingredients, steps, summary } = doc.data()
+        const recipeInfo = {
+          ingredients,
+          steps,
+          summary,
+        }
+        setSelRecipeInfo(recipeInfo)
+      })*/
+
+
+  const docRef = doc(db, 'recipes', recipe.id, 'info', 'info1');
+
+ 
+ /*useEffect(() => {
+    const fetchRecipeInfo = async () => {
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()){
+        //const {ingredients, steps, summary } = docSnap.data();
+        const recipeInfoObj = {
+         id: docSnap.id,
+         ...docSnap.data(),
+        };
+        setRecipeInfo(recipeInfoObj);
+      } else {
+        console.log('No such document');
+      }
+    };
+    fetchRecipeInfo;
+  }, []);*/
+  getDoc(docRef)
+      .then((doc) => {
+        const {ingredients, steps, summary} = doc.data();
+        const ingredientList = Object.entries(ingredients); //not sure about this
+        const recipeObj = {
+          id: doc.id,
+          //...doc.data(),
+          ingredientList,
+          steps,
+          summary,
+        }
+        setRecipeInfo(recipeObj)
+      })
+  
 
   function renderHeaderBar() {
     return(
@@ -82,7 +150,7 @@ const RecipeScreen = ({navigation, route}) => {
       >
         {/* Background Image */}
         <Animated.Image
-          source = {selectedRecipe?.image}
+          source = {{uri: selectedRecipe?.image}}
           resizeMode = 'contain'
           style = {{
             height: HEADER_HEIGHT,
@@ -169,7 +237,8 @@ const RecipeScreen = ({navigation, route}) => {
               color: COLORS.gray,
               fontSize: SIZES.medium,
             }} >
-              {selectedRecipe?.description}
+              {/*selectedRecipe?.description*/}
+              {recipeInfo?.summary} 
             </Text>
           </View>
         </View>
@@ -207,7 +276,7 @@ const RecipeScreen = ({navigation, route}) => {
 
         }}
         >
-          {selectedRecipe?.ingredients.length} items
+          {/*selectedRecipe?.ingredients.length*/} {/*recipeInfo?.ingredients*/} items
         </Text>
 
       </View>
@@ -215,8 +284,8 @@ const RecipeScreen = ({navigation, route}) => {
   }
 
   {/* Recipe Directions */}
-  function renderRecipeDirections(){
-    const[savedRecipe, setSavedRecipe] = React.useState(savedRecipe?.isSaved)
+  /*function renderRecipeDirections(){
+    //const[savedRecipe, setSavedRecipe] = React.useState(savedRecipe?.isSaved)
     return(
       <View style = {{
         paddingLeft: 10,
@@ -234,7 +303,8 @@ const RecipeScreen = ({navigation, route}) => {
         </Text>
 
         <FlatList
-          data = {selectedRecipe?.directions}
+          //data = {selectedRecipe?.directions}
+          data = {selRecipeInfo?.steps}
           horizontal = {false}
           showsVerticalScrollIndicator = {false}
           renderItem = {({ item}) =>(
@@ -274,7 +344,7 @@ const RecipeScreen = ({navigation, route}) => {
         }}
         >
           <Ionicons
-            name = {selectedRecipe?.isSaved ? 'heart' : 'heart-outline'}
+            name = 'heart'
             size = {30}
             style = {{
               color: COLORS.white,
@@ -284,13 +354,12 @@ const RecipeScreen = ({navigation, route}) => {
             fontFamily: FONT.bold,
             color: COLORS.white,
             fontSize: SIZES.large
-          }}> {selectedRecipe?.isSaved ? 'Unsave' : 'Save' } </Text>
+          }}> Save </Text>
         </TouchableOpacity>
 
       </View>
     )
-  }
-
+  }*/
   return (
     <View
       style = {{
@@ -300,7 +369,7 @@ const RecipeScreen = ({navigation, route}) => {
     >
     
       <Animated.FlatList
-        data = {selectedRecipe?.ingredients}
+        data = {recipeInfo?.ingredients}
         keyExtractor = {item => `${item.id}`}
         showsVerticalScrollIndicator = {false}
         ListHeaderComponent = {
@@ -386,7 +455,7 @@ const RecipeScreen = ({navigation, route}) => {
                   fontFamily: FONT.bold,
                   color: COLORS.gray3,
                 }}
-              >
+              >hi
                 {item.quantity}
               </Text>
             </View>
@@ -401,7 +470,7 @@ const RecipeScreen = ({navigation, route}) => {
           }}
           >
             {/*Directions*/}
-            {renderRecipeDirections()}
+            {/*renderRecipeDirections()*/}
           </View>
         }
       />
@@ -415,28 +484,3 @@ const RecipeScreen = ({navigation, route}) => {
 }
 
 export default RecipeScreen;
-
-/*
-const { recipeCategory, recipe } = route.params;
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
-    >
-      <Text>RecipeScreen</Text>
-      <TouchableOpacity
-          //onPress={() => navigation.navigate(
-          //  `${recipeCategory}RecipesScreen`, 
-          //  {recipeCategory: recipeCategory })}
-          onPress={() => navigation.goBack()}
-      >
-          <Text>Navigate to Recipe Options</Text>
-      </TouchableOpacity>
-    </View>
-  )
-*/
-
-//const styles = StyleSheet.create({})

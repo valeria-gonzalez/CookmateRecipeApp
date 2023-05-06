@@ -16,8 +16,8 @@ import {
 
 import RecipeCard from '../../common/recipeCard/RecipeCard';
 import Title from '../title/Title';
-import { firebase, db } from '../../config';
-//import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from '../../config';
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 const FoundRecipes = ({navigation, recipeCategory}) => {
     const [loading, setLoading] = useState(true);
@@ -26,30 +26,25 @@ const FoundRecipes = ({navigation, recipeCategory}) => {
       }, 800);
     
     const [recipes, setRecipes] = useState([]);
-    const recipesRef = firebase.firestore().collection('recipes');
-    //const q = query(collection(db, "recipes"), where("category", "==", "Lunch"));
-    useEffect(() => {
-        const loadData = async () => {
-            recipesRef.onSnapshot(
-                querySnapshot => {
-                    const recipes = []
-                    querySnapshot.forEach((doc) => {
-                        const { name, category, image, price } = doc.data()
-                        recipes.push({
-                            id: doc.id,
-                            name,
-                            category,
-                            image,
-                            price,
-                        })
-                    })
-                    setRecipes(recipes)
-                }
-            )
-        };
-
-        loadData();
-    }, []);
+    const colRef = collection(db, 'recipes');
+    getDocs(colRef)
+        .then((snapshot) => {
+            const recipes = []
+            snapshot.docs.forEach((doc) => {
+                const { name, category, image, price } = doc.data()
+                recipes.push({
+                    id: doc.id,
+                    name,
+                    category,
+                    image,
+                    price,
+                })
+            })
+            setRecipes(recipes)
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
 
     return (
         <View style = {styles.cardsContainer}>
@@ -100,8 +95,8 @@ const FoundRecipes = ({navigation, recipeCategory}) => {
                                 //passing as props the recipe category and the recipe item
                                 //recipe category is necessary to return to options page if
                                 //wanted
-                                //onPress = {() => navigation.navigate
-                                    //('RecipeScreen', {recipe: item})}
+                                onPress = {() => navigation.navigate
+                                    ('RecipeScreen', {recipe: item})}
                             />
                         )
                     }}

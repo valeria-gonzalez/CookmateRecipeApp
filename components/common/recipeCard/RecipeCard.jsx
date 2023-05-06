@@ -8,12 +8,12 @@ import React from 'react'
 import styles from './recipeCard.style'
 import { icons, images, SIZES, COLORS} from '../../../constants'
 
-const RecipeCard = ({recipeItem}) => {
+const RecipeCard = ({recipeItem, onPress}) => {
     //console.log("recipeItem: ", recipeItem);
     return (
         <TouchableOpacity 
             style = {styles.cardContainer}
-            //onPress = {onPress}
+            onPress = {onPress}
         >
             {/* Image */}
             <Image
