@@ -1,4 +1,4 @@
-import { View} from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
 import {
   SafeAreaProvider,
@@ -19,27 +19,23 @@ const DinnerRecipesScreen = ({ route, navigation }) => {
           height: SIZES.height, 
           width: SIZES.width,
           paddingTop: insets.top,
-          //paddingBottom: insets.bottom,
           paddingLeft: insets.left,
           paddingRight: insets.right,
 
         }}>
-        {/*<ScrollView showsVerticalScroolIndicator = {false}>*/}
+        
             <View
                 style = {{ 
                   flex: 1, 
                   paddingHorizontal: scale(20)
                 }}
-            >
-                {/*<Text>RecipeOptionsScreen</Text>*/}
-                
+            > 
                 {/* Came from Category.js, will now go to Section 
                 with recipes of xclusively breakfast type, having prop
                 the category (breakfast) */}
                 <FoundRecipes navigation = {navigation} recipeCategory = {recipeCategory} />
                 
             </View>
-        {/*</ScrollView>*/}
     </SafeAreaProvider>
   )
 }

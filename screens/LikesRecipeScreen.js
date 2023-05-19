@@ -12,63 +12,72 @@ import {
 import { COLORS, icons, SIZES, FONT } from '../constants';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { db } from '../components/config';
-import { collection, addDoc, query, where, getDocs, doc, setDoc } from "firebase/firestore";
+import { collection, deleteDoc, query, where, getDoc, doc, deleteField } from "firebase/firestore";
 
 import styles from '../styles/recipeScreen.style';
 
 const HEADER_HEIGHT = 350;
 
-const RecipeScreen = ({navigation, route}) => {
+const LikesRecipeScreen = ({navigation, route}) => {
 
   const [selectedRecipe, setSelectedRecipe] = React.useState(null);
-  //const [recipeInfo, setRecipeInfo] = useState({});
+  const [recipeInfo, setRecipeInfo] = useState({});
   const scrollY = useRef( new Animated.Value(0)).current;
 
   //to handle recipe information
   const { recipe } = route.params
-  const numIngreds = recipe.ingredients.length;
+  const docId = recipe.id;
 
   React.useEffect(() => {
     setSelectedRecipe(recipe)
   }, [])
-
   //to handle saved button
   const [pressed, setPressed] = useState(false);
   
   const handlePress = async () => {
     if(!pressed){
       setPressed(true);
-      // add to database
+      // delete from database
       try{
-        const colRef = collection(db, 'fav recipes');
-        const linkQuery = query(colRef, where('link', '==', selectedRecipe?.link));
-        const querySnapshot = await getDocs(linkQuery);
+        // Delete 'info1' document
+        const info1DocRef = doc(collection(db, 'fav recipes', docId, 'info'), 'info1');
+        await deleteDoc(info1DocRef);
 
-        if(querySnapshot.empty){
-          const docRef = await addDoc(colRef, {
-            user: 'SdxwmKk2uTarVfYqKVWg',
-            link: selectedRecipe?.link,
-            name: selectedRecipe?.name,
-            image: selectedRecipe?.image,
-            category: selectedRecipe?.category,
-            price: selectedRecipe?.price,
-          });
+        // Delete main document
+        const mainDocRef = doc(collection(db, 'fav recipes'), docId);
+        await deleteDoc(mainDocRef);
 
-          //create subcollection in new document
-          const subColRef = collection(docRef, 'info');
-          const subDocRef = doc(subColRef, 'info1');
-          await setDoc(subDocRef, {
-            ingredients: selectedRecipe?.ingredients,
-            steps: selectedRecipe?.steps,
-          });
-        } else {
-          console.log('Recipe already saved');
-        }
+        console.log('Recipe successfully deleted');
+
       } catch (error) {
-        console.error("Error adding document: ", error);
+        console.error("Error deleting document: ", error);
       }
     }
   };
+
+  {/* Database operations to get recipe info */}
+  const handleDatabaseRecipe = async () => {
+    const docRef = doc(collection(db, 'fav recipes', docId, 'info'), 'info1');
+    
+    getDoc(docRef).then((doc) => {
+        const { ingredients, steps } = doc.data();
+        const numIngreds = ingredients.length;
+
+        const recipeObj = {
+            id: doc.id,
+            ingredients,
+            steps,
+            numIngreds,
+        }
+        setRecipeInfo(recipeObj);
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+    })
+  };
+
+  useEffect(() => {
+    handleDatabaseRecipe()
+  }, [])
   
   {/* Recipe Header Bar (Back Button) */}
   function renderHeaderBar() {
@@ -169,7 +178,7 @@ const RecipeScreen = ({navigation, route}) => {
         </Text>
 
         <Text style = {styles.ingredHeaderItemCntTxt}>
-          {numIngreds} items
+          {recipeInfo?.numIngreds} items
         </Text>
       </View>
     )
@@ -185,7 +194,7 @@ const RecipeScreen = ({navigation, route}) => {
         </Text>
 
         <FlatList
-          data = {selectedRecipe?.steps}
+          data = {recipeInfo?.steps}
           horizontal = {false}
           showsVerticalScrollIndicator = {false}
           renderItem = {({ item }) =>(
@@ -215,7 +224,7 @@ const RecipeScreen = ({navigation, route}) => {
                     color: COLORS.white,
                   }}
                 />
-                <Text style = {styles.recipeSaveBtnTxt}> Save </Text>
+                <Text style = {styles.recipeSaveBtnTxt}> Unsave </Text>
             </>
           ) : (
             <>
@@ -226,7 +235,7 @@ const RecipeScreen = ({navigation, route}) => {
                     color: COLORS.white,
                   }}
                 />
-                <Text style = {styles.recipeSaveBtnTxt}> Saved </Text>
+                <Text style = {styles.recipeSaveBtnTxt}> Unsaved </Text>
             </>
           )}
         </TouchableOpacity>
@@ -244,7 +253,7 @@ const RecipeScreen = ({navigation, route}) => {
     
       <Animated.FlatList
         //data = {recipeInfo?.ingreds}
-        data = {selectedRecipe?.ingredients}
+        data = {recipeInfo?.ingredients}
         //keyExtractor = {item => `${item.id}`}
         showsVerticalScrollIndicator = {false}
         ListHeaderComponent = {
@@ -361,4 +370,4 @@ const RecipeScreen = ({navigation, route}) => {
   
 }
 
-export default RecipeScreen;
+export default LikesRecipeScreen;

@@ -6,7 +6,8 @@ import * as SplashScreen from 'expo-splash-screen'
 //screens
 import {
     LoginScreen, RecipeScreen, RecipeOptionsScreen, 
-    BreakfastRecipesScreen, LunchRecipesScreen, DinnerRecipesScreen
+    BreakfastRecipesScreen, LunchRecipesScreen, DinnerRecipesScreen,
+    SearchResultScreen, LikesRecipeScreen
 } from '../screens';
 //this is the bottom tab navigator for the homescreen
 import { BottomTab } from '../navigation/BottomTab';
@@ -53,8 +54,8 @@ const Page = () => {
             <Stack.Screen name = 'RecipeScreen' component = 
             {RecipeScreen} />
 
-            {/*<Stack.Screen name = 'RecipeOptionsScreen' component = 
-            {RecipeOptionsScreen} />*/}
+            <Stack.Screen name = 'LikesRecipeScreen' component = 
+            {LikesRecipeScreen} />
 
             <Stack.Screen name = 'BreakfastRecipesScreen' component = 
             {BreakfastRecipesScreen} />
@@ -64,6 +65,9 @@ const Page = () => {
 
             <Stack.Screen name = 'DinnerRecipesScreen' component = 
             {DinnerRecipesScreen} />
+
+            <Stack.Screen name = 'SearchResultScreen' component = 
+            {SearchResultScreen} />
 
         </Stack.Navigator>
     </NavigationContainer>

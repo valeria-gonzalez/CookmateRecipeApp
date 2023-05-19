@@ -1,19 +1,11 @@
 import React from 'react'
-import { View, Text, Image, FlatList, TouchableOpacity, SafeAreaView, 
-
-} from 'react-native'
+import { View, Text, Image } from 'react-native'
 
 import styles from './welcome.style'
-import { icons, images, SIZES, COLORS } from '../../../constants'
-
-
-//const recipeType = ['Breakfast', 'Lunch', 'Dinner'];
+import { images } from '../../../constants'
 
 const Welcome = () => {
-  var userName = 'Valeria';
-  //const [activeRecipeType, setActiveRecipeType] = React.useState('Breakfast');
-  //const { fontScale } = useWindwoDimensions();
-  //const styles = styles(fontScale);
+  var userName = 'today';
 
   return (
     <View style = {styles.container}>

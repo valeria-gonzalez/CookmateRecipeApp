@@ -7,6 +7,8 @@ import RecipeScreen from './RecipeScreen';
 import BreakfastRecipesScreen from './BreakfastRecipesScreen';
 import LunchRecipesScreen from './LunchRecipesScreen';
 import DinnerRecipesScreen from './DinnerRecipesScreen';
+import SearchResultScreen from './SearchResultScreen';
+import LikesRecipeScreen from './LikesRecipeScreen';
 
 export {
     LoginScreen,
@@ -17,5 +19,7 @@ export {
     BreakfastRecipesScreen,
     LunchRecipesScreen,
     DinnerRecipesScreen,
+    SearchResultScreen,
+    LikesRecipeScreen,
     //RecipeOptionsScreen
 };
