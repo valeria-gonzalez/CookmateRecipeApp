@@ -1,6 +1,6 @@
-import {Text, View, TouchableOpacity, ScrollView, Image, TextInput} from 'react-native'
+import {Text, View, TouchableOpacity, Image, ImageBackground} from 'react-native'
 import React from 'react'
-import {images, FONT, COLORS, SIZES} from '../constants'
+import {COLORS, SIZES} from '../constants'
 import styles from '../styles/loginScreen.style'
 import {
   SafeAreaProvider,
@@ -9,6 +9,9 @@ import {
 
 const LoginScreen = ({navigation}) => {
   const insets = useSafeAreaInsets();
+  const imageLink = 'https://firebasestorage.googleapis.com/v0/b/recipeapp-427b6.appspot.com/o/icons%2Fmushroom.png?alt=media&token=c8cd2d9e-5bbe-4062-8f71-bcf9ada60f60';
+  //const backLink = 'https://console.firebase.google.com/u/2/project/recipeapp-427b6/storage/recipeapp-427b6.appspot.com/files/~2Ficons';
+
   return(
     <SafeAreaProvider
       style = {{
@@ -18,93 +21,42 @@ const LoginScreen = ({navigation}) => {
         paddingTop: insets.top,
         paddingLeft: insets.left,
         paddingRight: insets.right,
-        //paddingBottom: insets.bottom,
+        paddingBottom: insets.bottom,
       }}
     >
-      <ScrollView showsVerticalScroolIndicator = {false}
-          contentContainerStyle = {{
-            flex: 1,
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-          }}
-      >
-          <View
-            style={{
-              //flex: 1,
-              //flexDirection: 'column',
-              //justifyContent: 'space-around',
-              alignItems: 'center',
-            }}
+        <View 
+          style={styles.container}
         >
-          <Text
-            style = {{ fontSize: 26, fontWeight: 'bold' }}
-          >
-            Login under construction
-            </Text>
+          <View style = {styles.appLogo}>
+            <Text style = {styles.logoTxt}>Cookmate</Text>
+            <View style = {styles.loginDesc}>
+              <Text style = {styles.descSubtitle}>
+                Find recipes based on your pantry and budget using Web Scraping 
+              </Text>
+            </View>
+          </View>
+
+
+          <View style = {styles.imgCont}>
+            <Image
+              source = {{uri: imageLink}}
+              style = {styles.loginImg}
+              resizeMode = 'contain'
+            />
+          </View>
+
           <TouchableOpacity
+              style = {styles.btnCont}
               onPress={() => navigation.replace('HomeScreen')}
           >
-              <Text style = {{
-                fontSize: 26,
-                marginTop: 20,
-                marginLeft: 10,
-                fontFamily: FONT.bold,
-                color: COLORS.primary,
-              }}>Navigate to Home</Text>
-              <Image
-                source = {images.construction}
-                style = {{
-                  width: 300,
-                  height: 300,
-                  marginTop: 30,
-                }
-                }
-              />
+              <Text style = {styles.btnTxt}>
+                Navigate to Home
+              </Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
     </SafeAreaProvider>
 
   );
-
-  /*return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
-    >
-      <Text
-         style = {{ fontSize: 26, fontWeight: 'bold' }}
-      >
-        Login under construction
-        </Text>
-      <TouchableOpacity
-          onPress={() => navigation.replace('HomeScreen')}
-      >
-          <Text style = {{
-            fontSize: 26,
-            marginTop: 20,
-            marginLeft: 10,
-            fontFamily: FONT.bold,
-            color: COLORS.primary,
-          }}>Navigate to Home</Text>
-          <Image
-            source = {images.construction}
-            style = {{
-              width: 300,
-              height: 300,
-              marginTop: 30,
-            }
-            }
-          />
-      </TouchableOpacity>
-    </View>
-  )*/
 }
 
 export default LoginScreen
-
-//const styles = StyleSheet.create({})

@@ -1,9 +1,9 @@
 import React from 'react'
-import { View, Text, Image, FlatList, TouchableOpacity} from 'react-native'
+import { View, Text, TouchableOpacity} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import styles from './title.style'
-import { icons, images, SIZES, COLORS, verticalScale} from '../../../constants'
+import { verticalScale } from '../../../constants'
 
 const Title = ({navigation, recipeCategory}) => {
   return (

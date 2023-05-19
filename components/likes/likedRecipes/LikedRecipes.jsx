@@ -1,33 +1,62 @@
 import { 
     View, 
-    Text, 
-    TouchableOpacity, 
+    Text,  
     FlatList,
     ActivityIndicator, 
     Animated
 } from 'react-native'
 
-import React, {useRef} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import styles from './likedRecipes.style'
-import { icons, images, SIZES, COLORS, dummyData, verticalScale } from '../../../constants'
+import { icons, images, SIZES, COLORS, 
+    verticalScale, FONT 
+} from '../../../constants'
 import RecipeCard from '../../common/recipeCard/RecipeCard';
 import LikesTitle from '../likesTitle/LikesTitle';
+import { db } from '../../config';
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 const LikedRecipes = ({navigation, recipeCategory}) => {
-    const isLoading = false;
-    const error = false;
-    const scrollY = useRef(new Animated.Value(0)).current;
+    const [recipes, setRecipes] = useState([]);
+    
+    const userID = 'SdxwmKk2uTarVfYqKVWg';
+
+    const handleDatabaseFoundRecipes = async () => {
+        const colRef = collection(db, 'fav recipes');
+        const q = query(colRef, where('user', '==', userID));
+
+        getDocs(q)
+            .then((snapshot) => {
+                const recipes = []
+                snapshot.docs.forEach((doc) => {
+                    const { name, category, image, price } = doc.data()
+                    recipes.push({
+                        id: doc.id,
+                        name,
+                        category,
+                        image,
+                        price,
+                    })
+                })
+                setRecipes(recipes)
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+    };
+
+    useEffect(() => {
+        const list = navigation.addListener('focus', () => {
+            handleDatabaseFoundRecipes();
+        });
+        return list;
+    }, [navigation])
 
     return (
         <View style = {styles.cardsContainer}>
-            { isLoading ? (
-                <ActivityIndicator size = "large" color = {COLORS.primary} />
-            ) : error ? (
-                <Text>Something went wrong </Text>
-            ) : (
                 <FlatList
-                    data = {dummyData.categories}
+                    data = {recipes}
                     keyExtractor = {item => `${item.id}`}
                     showsVerticalScrollIndicator = {false}
                     numColumns = {2}
@@ -40,12 +69,6 @@ const LikedRecipes = ({navigation, recipeCategory}) => {
                             <LikesTitle navigation = {navigation} recipeCategory = {recipeCategory} />
                         </View>
                     }
-                    //scrollEventThrottle={16}
-                    /*onScroll = {
-                        Animated.event([
-                            {nativeEvent: {contentOffset: { y: scrollY}}}
-                        ], {useNativeDriver: true})
-                    }*/
                     renderItem = {({ item }) => {
                         return (
                             <RecipeCard 
@@ -55,7 +78,7 @@ const LikedRecipes = ({navigation, recipeCategory}) => {
                                 //recipe category is necessary to return to options page if
                                 //wanted
                                 onPress = {() => navigation.navigate
-                                    ('RecipeScreen', {recipe: item})}
+                                    ('LikesRecipeScreen', {recipe: item})}
                             />
                         )
                     }}
@@ -64,10 +87,7 @@ const LikedRecipes = ({navigation, recipeCategory}) => {
                         <View style = {{marginBottom: verticalScale(10)}} />
                     }
                     
-                    // 
                 />
-            )} 
-           
             
         </View>
        

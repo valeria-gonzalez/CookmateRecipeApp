@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, Image, FlatList, TouchableOpacity} from 'react-native';
+import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
 
 import styles from './category.style';
-import { icons, images, SIZES, verticalScale, COLORS } from '../../../constants';
+import { images, SIZES } from '../../../constants';
 
 const recipeType = ['Breakfast', 'Lunch', 'Dinner'];
 

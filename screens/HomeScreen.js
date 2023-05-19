@@ -32,7 +32,6 @@ export default function HomeScreen({navigation}) {
               flexDirection: 'column',
               alignContent: 'center',
               justifyContent: 'center',
-              //paddingHorizontal: scale(20),
               paddingVertical: verticalScale(15),
             }}
           >

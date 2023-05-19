@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, FlatList, Image, TouchableOpacity } from 'react-native';
 import { 
   COLORS,
   icons, 
-  images, 
   SIZES,
-  dummyIngredients
 } from '../constants';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -17,10 +15,16 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
+import { db } from '../components/config';
+import { collection, query, where, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { set } from 'react-native-reanimated';
 
-export default function PantryScreen({ navigation }) {
 
+export default function PantryScreen({ navigation}) {
   const insets = useSafeAreaInsets();
+  const [value, setValue] = useState('');
+  const user = 'SdxwmKk2uTarVfYqKVWg';
+  const [ingredients, setIngredients] = useState([]);
 
   {/* Render Header of scren */}
   function renderHeader(){
@@ -35,16 +39,23 @@ export default function PantryScreen({ navigation }) {
   function renderSearchBar(){
     return(
       <View style = {styles.searchCont}>
-        <Ionicons
-          name = "search"
-          size = {30}
-          style = {styles.searchIcon}
-        />
         <TextInput 
           style = {styles.searchInput}
           placeholderTextColor={COLORS.gray}
           placeholder = "Search for ingredients"
-        />   
+          onChangeText = {setValue}
+          value = {value}
+        />
+        <TouchableOpacity 
+          style = {styles.searchIconCont}
+          onPress = {() => navigation.navigate("SearchResultScreen", {searchFor: value, user: user})}
+        >
+          <Ionicons
+            name = "search"
+            size = {30}
+            style = {styles.searchIcon}
+          />
+        </TouchableOpacity>
       </View>
     )
   }
@@ -57,11 +68,43 @@ export default function PantryScreen({ navigation }) {
           Ingredients
         </Text>
         <Text style = {styles.ingredCountText}>
-          {dummyIngredients.pantry.length} items
+          {ingredients.length} items
         </Text>
       </View>
     )
   }
+
+  {/* Database operations to collect user ingredients */}
+  const handleDatabase = async () => {
+    const colRef = collection(db, 'fav ingredients');
+    const q = query(colRef, where('userID', '==', user));
+
+    getDocs(q)
+        .then((snapshot) => {
+            const ingreds = []
+            snapshot.docs.forEach((doc) => {
+                const { description, userID } = doc.data()
+                ingreds.push({
+                    id: doc.id,
+                    description,
+                    userID,
+                })
+            })
+            setIngredients(ingreds)
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
+  };
+
+  useEffect(() => {
+    //to call handleDatabase() when the screen is focused
+    const unsubscribe = navigation.addListener('focus', () => {
+      handleDatabase();
+    });
+    //return unsubscribe from event so it gets removed on unmount
+    return unsubscribe;
+  }, [navigation])
 
   return(
     <SafeAreaProvider 
@@ -76,7 +119,7 @@ export default function PantryScreen({ navigation }) {
       }}
     >
       <FlatList
-        data = {dummyIngredients.pantry}
+        data = {ingredients}
         showsVerticalScrollIndicator = {false}
         keyExtractor = {item => `${item.id}`}
         ListHeaderComponent = {
@@ -113,7 +156,15 @@ export default function PantryScreen({ navigation }) {
             {/* Delete icon */}
             <TouchableOpacity 
               style = {styles.deleteIconCont}
-              //onPress = {() => {}}
+              //database function to delete ingredient from user here
+              onPress = {() => {
+                const documentID = item.id;
+                const docRef = doc(db, 'fav ingredients', documentID);
+                deleteDoc(docRef);
+                setIngredients(ingredients.filter((item) => item.id !== documentID));
+                //handleDatabase();
+                //console.log(ingredients)
+              }}
             >
               <Ionicons
                 name = "close-circle"

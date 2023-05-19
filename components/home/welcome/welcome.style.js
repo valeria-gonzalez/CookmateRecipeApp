@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
         fontFamily: FONT.regular,
         fontSize: scaleFont(SIZES.medium, SIZES.fontScale),
         color: COLORS.gray3,
+        lineHeight: verticalScale(23),
     },
     bold: {
         fontFamily: FONT.bold,

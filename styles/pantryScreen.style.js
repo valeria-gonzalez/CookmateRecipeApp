@@ -4,6 +4,15 @@ import { COLORS, FONT, SIZES, moderateScale, scale, verticalScale,
 scaleFont } from "../constants";
 
 const styles = StyleSheet.create({
+    returnIcon: {
+        color: COLORS.orange02,
+    },
+    resultHeaderCont: {
+        //backgroundColor: COLORS.lightWhite,
+        paddingHorizontal: scale(20),
+        paddingVertical: verticalScale(5),
+        paddingBottom: verticalScale(10),
+    },
     listHeaderCont: {
         //backgroundColor: COLORS.lightWhite,
         paddingHorizontal: scale(20),
@@ -24,8 +33,16 @@ const styles = StyleSheet.create({
         paddingHorizontal: scale(20),
         borderRadius: 30,
     },
+    searchIconCont: {
+        width: '20%',
+        height: '80%',
+        backgroundColor: COLORS.orange02,
+        borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     searchIcon: {
-        color: COLORS.primary,
+        color: COLORS.white,
     },
     searchInput: {
         width: '80%',
@@ -33,7 +50,7 @@ const styles = StyleSheet.create({
         //alignSelf: 'center',
         marginLeft: scale(10),
         fontFamily: FONT.regular,
-        fontSize: scaleFont(SIZES.medium, SIZES.fontScale),
+        fontSize: scaleFont(SIZES.medium+2, SIZES.fontScale),
     },
     ingrTitleCont: {
         //marginTop: verticalScale(20),
@@ -61,7 +78,7 @@ const styles = StyleSheet.create({
         paddingVertical: verticalScale(7),
         marginHorizontal: scale(20),
         marginVertical: verticalScale(5),
-        height: verticalScale(60),
+        //height: verticalScale(60),
         width: '90%',
         backgroundColor: COLORS.tertiary,
         borderRadius: 10,
@@ -97,6 +114,9 @@ const styles = StyleSheet.create({
         //backgroundColor: COLORS.orange,
     },
     deleteIcon: {
+        color: COLORS.orange02,
+    },
+    addIcon: {
         color: COLORS.orange02,
     },
     
