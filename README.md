@@ -87,16 +87,16 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/valeria-gonzalez/recipeApp.svg?style=for-the-badge
-[contributors-url]: https://github.com/valeria-gonzalez/recipeApp/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/valeria-gonzalez/recipeApp.svg?style=for-the-badge
-[forks-url]: https://github.com/valeria-gonzalez/recipeApp/network/members
-[stars-shield]: https://img.shields.io/github/stars/valeria-gonzalez/recipeApp.svg?style=for-the-badge
-[stars-url]: https://github.com/valeria-gonzalez/recipeApp/stargazers
-[issues-shield]: https://img.shields.io/github/issues/valeria-gonzalez/recipeApp.svg?style=for-the-badge
-[issues-url]: https://github.com/valeria-gonzalez/recipeApp/issues
-[license-shield]: https://img.shields.io/github/license/valeria-gonzalez/recipeApp.svg?style=for-the-badge
-[license-url]: https://github.com/valeria-gonzalez/recipeApp/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/valeria-gonzalez/CookmateRecipeApp.svg?style=for-the-badge
+[contributors-url]: https://github.com/valeria-gonzalez/CookmateRecipeApp/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/valeria-gonzalez/CookmateRecipeApp.svg?style=for-the-badge
+[forks-url]: https://github.com/valeria-gonzalez/CookmateRecipeApp/network/members
+[stars-shield]: https://img.shields.io/github/stars/valeria-gonzalez/CookmateRecipeApp.svg?style=for-the-badge
+[stars-url]: https://github.com/valeria-gonzalez/CookmateRecipeApp/stargazers
+[issues-shield]: https://img.shields.io/github/issues/valeria-gonzalez/CookmateRecipeApp.svg?style=for-the-badge
+[issues-url]: https://github.com/valeria-gonzalez/CookmateRecipeApp/issues
+[license-shield]: https://img.shields.io/github/license/valeria-gonzalez/CookmateRecipeApp.svg?style=for-the-badge
+[license-url]: https://github.com/valeria-gonzalez/CookmateRecipeApp/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/valeria-gonzalez-segura
 [product-screenshot]: images/screenshot.png
