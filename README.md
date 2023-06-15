@@ -1,8 +1,8 @@
 # Cookmate recipe app
 
-Hello there, Cookmate is made to help you find recipes from all over the web based on your pantry. 
+Hello there, Cookmate is made to help you find recipes from all over the web based on your pantry!
 
-Cookmate is a cross-platform mobile app developed using Expo, NodeJs, React Native and Javascript. It's primary purpose is to assist users in finding recipes from various sources on the internet that match their available ingredients. It's fueled by a Flask API (which can be found here) that includes a Web Scraper and manages interactions with Firestore Database. Currently, the app only scrapes bowlsofdelicious.com.
+Cookmate is a cross-platform mobile app developed using Expo, NodeJs, React Native and Javascript. It's primary purpose is to assist users in finding recipes from various sources on the internet that match their available ingredients. 
 
 ### Feautures
 - __Ingredient-based Recipe Search:__ Cookmate enables users to save all their available ingredients, and it collects recipes that can be created using those ingredients. By incorporating Nutritionix API to allow searching for hundreds of new ingredients.
