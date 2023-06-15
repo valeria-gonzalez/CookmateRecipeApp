@@ -20,7 +20,7 @@
 <!-- PROJECT LOGO -->
 <br />
 
-<h3 align="center">Cookmate</h3>
+<h3 align="center">Cookmate Recipe App</h3>
 
   <p align="center">
     Hello there, Cookmate is made to help you find recipes from all over the web based on your pantry!
