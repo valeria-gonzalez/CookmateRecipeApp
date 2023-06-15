@@ -2,14 +2,15 @@
 
 Hello there, Cookmate is made to help you find recipes from all over the web based on your pantry. 
 
-### Fun facts
-Cookmate is made with Expo, React Native and Javascript. It's fueled by a Flask API (which can be found here) that includes a Web Scraper and manages interactions with Firestore Database. Currently, the app only scrapes bowlsofdelicious.com.
+Cookmate is a cross-platform mobile app developed using Expo, NodeJs, React Native and Javascript. It's primary purpose is to assist users in finding recipes from various sources on the internet that match their available ingredients. It's fueled by a Flask API (which can be found here) that includes a Web Scraper and manages interactions with Firestore Database. Currently, the app only scrapes bowlsofdelicious.com.
 
-### Functionalities
-Cookmate includes the following features:
-- A pantry to save all available ingredients, made possible with Nutritionix API.
-- Saving favorite recipes to consult at any time.
-- Finding recipes based on different categories (breakfast, lunch and dinner).
+### Feautures
+- __Ingredient-based Recipe Search:__ Cookmate enables users to save all their available ingredients, and it collects recipes that can be created using those ingredients. By incorporating Nutritionix API to allow searching for hundreds of new ingredients.
+- __Category Selection:__ Users can choose the category of recipes they want to explore, such as breakfast, lunch or dinner.
+- __Web Scraping:__ The app incorporates a python web scraper to collect recipes from the internet (currently limited to one website).
+- __Database Integration:__ Cookmate uses Google Firestore as its database, allowing for efficient storage and retrieval of user data, ingredients, and favorite recipes.
+- __Personal API:__ The app includes a custom API built with Flask and hosted on Railway, that provides endpoints to support the app's functionality, such as executing theweb scraper, retrieving user ingredients and filtering recipes based on them, as well as managing some database interactions.
+-  Saving favorite recipes to consult at any time.
 
 ## Final Results
 ![IMG_7640](https://github.com/valeria-gonzalez/recipeApp/assets/71797910/16535773-8252-4dc2-ab88-151f66e938b5)
