@@ -37,7 +37,7 @@ Cookmate is a cross-platform mobile app created to help users find recipes from 
 
 [![Node][Node.js]][Node-url] [![React Native][React-Native]][React-url] [![Javascript][Javascript]][Javascript-url] [![Python][Python]][Python-url] [![Flask][Flask]][Flask-url] [![Firestore][Firestore]][Firestore-url] [![Expo][Expo]][Expo-url]
 
-### Feautures
+### Features
 - __Ingredient-based Recipe Search:__ Cookmate enables users to save all their available ingredients, and it collects recipes that can be created using those ingredients. By incorporating Nutritionix API to allow searching for hundreds of new ingredients.
 - __Category Selection:__ Users can choose the category of recipes they want to explore, such as breakfast, lunch or dinner.
 - __Save Favorite Recipes:__ Cookmate allows users to save their favorite recipes for future reference.
