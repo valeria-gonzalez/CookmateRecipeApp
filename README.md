@@ -31,7 +31,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Cookmate is a cross-platform mobile app created to help users find recipes from various sources on the internet using web scraping, that match their available ingredients, making cooking easier then ever. This project was initially designed to help young people better their eating habits, however, it quickly turned into a project for anyone with a desire to cook. The app is designed to look youthful and creative, while still remainig easy to use and understandable.
+Cookmate is a cross-platform mobile app created to help users find recipes from various sources on the internet using web scraping, that match their available ingredients, making cooking easier then ever. This project was initially designed to help young people better their eating habits, however, it quickly turned into a project for anyone with a desire to cook. The app is designed to look youthful and creative, while still remaining easy to use and understandable.
 
 ### Built With
 
@@ -43,7 +43,7 @@ Cookmate is a cross-platform mobile app created to help users find recipes from 
 - __Save Favorite Recipes:__ Cookmate allows users to save their favorite recipes for future reference.
 - __Web Scraping:__ The app incorporates a python web scraper to collect recipes from the internet (currently limited to one website).
 - __Database Integration:__ Cookmate uses Google Firestore as its database, allowing for efficient storage and retrieval of user data, such as available ingredients and favorite recipes.
-- __Personal API:__ The app includes a custom API built with Flask and hosted on Railway, that provides endpoints to support the app's functionality, such as executing theweb scraper, retrieving user ingredients and filtering recipes based on them, as well as managing some database interactions.
+- __Personal API:__ The app includes a custom API built with Flask and hosted on Railway, that provides endpoints to support the app's functionality, such as executing the web scraper, retrieving user ingredients and filtering recipes based on them, as well as managing some database interactions.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
