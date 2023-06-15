@@ -31,11 +31,11 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Cookmate is a cross-platform mobile app created to assist users in finding recipes from various sources on the internet that match their available ingredients. 
+Cookmate is a cross-platform mobile app created to help users find recipes from various sources on the internet using web scraping, that match their available ingredients, making cooking easier then ever. This project was initially designed to help young people better their eating habits, however, it quickly turned into a project for anyone with a desire to cook. The app is designed to look youthful and creative, while still remainig easy to use and understandable.
 
 ### Built With
 
-[![Node][Node.js]][Node-url] [![React Native][React-Native]][React-url] [![Javascript][Javascript]][Javascript-url] [![Python][Python]][Python-url] [![Flask][Flask]][Flask-url] [![Firestore][Firestore]][Firestore]
+[![Node][Node.js]][Node-url] [![React Native][React-Native]][React-url] [![Javascript][Javascript]][Javascript-url] [![Python][Python]][Python-url] [![Flask][Flask]][Flask-url] [![Firestore][Firestore]][Firestore-url] [![Expo][Expo]][Expo-url]
 
 ### Feautures
 - __Ingredient-based Recipe Search:__ Cookmate enables users to save all their available ingredients, and it collects recipes that can be created using those ingredients. By incorporating Nutritionix API to allow searching for hundreds of new ingredients.
@@ -68,22 +68,6 @@ Cookmate is a cross-platform mobile app created to assist users in finding recip
 ![Recipe appppp-5](https://github.com/valeria-gonzalez/recipeApp/assets/71797910/d9ba47eb-5c2d-400b-a149-c9bbd925a339)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- LICENSE -->
 ## License
 
@@ -93,10 +77,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-
-* []()
-* []()
-* []()
+* [bowlofdelicious.com](https://www.bowlofdelicious.com/)
+* [icons8.com](https://icons8.com/illustrations)
+* [Nutritionix API](https://www.nutritionix.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -117,15 +100,17 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/valeria-gonzalez-segura
 [product-screenshot]: images/screenshot.png
-[Node.js]: https://img.shields.io/badge/node.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Node.js]: https://img.shields.io/badge/node.js-green?style=for-the-badge&logo=node.js&logoColor=white
 [Node-url]: https://nodejs.org/en
 [React-Native]: https://img.shields.io/badge/React-native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactnative.dev/
-[Javascript]: https://img.shields.io/badge/Javascript-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Javascript]: https://img.shields.io/badge/Javascript-black?style=for-the-badge&logo=javascript&logoColor=yellow
 [Javascript-url]: https://www.javascript.com/
-[Python]: https://img.shields.io/badge/Python-DD0031?style=for-the-badge&logo=angular&logoColor=white
+[Python]: https://img.shields.io/badge/Python-blue?style=for-the-badge&logo=python&logoColor=white
 [Python-url]: https://www.python.org/
-[Flask]: https://img.shields.io/badge/Flask-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
+[Flask]: https://img.shields.io/badge/Flask-black?style=for-the-badge&logo=flask&logoColor=white
 [Flask-url]: https://flask.palletsprojects.com/en/2.3.x/
-[Firestore]: https://img.shields.io/badge/Firestore-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
+[Firestore]: https://img.shields.io/badge/Firestore-blue?style=for-the-badge&logo=firebase&logoColor=yellow
 [Firestore-url]: https://firebase.google.com/docs/firestore
+[Expo]: https://img.shields.io/badge/Expo-black?style=for-the-badge&logo=expo&logoColor=white
+[Expo-url]: https://docs.expo.dev/?utm_source=google&utm_medium=cpc&utm_content=performancemax&gclid=CjwKCAjwyqWkBhBMEiwAp2yUFlIy2iexdm_qLWLUfa4yVFpK1Vf48XGSmdgDCmZeUKzWcdYDTdM1yxoCpGAQAvD_BwE
